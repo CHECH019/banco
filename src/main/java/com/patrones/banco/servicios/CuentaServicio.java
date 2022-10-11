@@ -5,33 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.patrones.banco.dao.CuentaDAO;
+import com.patrones.banco.dto.CuentaDTO;
 import com.patrones.banco.iServicios.ICuentaServicio;
-import com.patrones.banco.modelo.CuentaAhorros;
-import com.patrones.banco.repositorios.CuentaRepositorio;
 
 @Service
 public class CuentaServicio implements ICuentaServicio{
 
     @Autowired
-    private CuentaRepositorio repositorio;
+    private CuentaDAO repositorio;
 
     @Override
-    public List<CuentaAhorros> getList() {
-        return (List<CuentaAhorros>) repositorio.findAll();
+    public List<CuentaDTO> getList() {
+        return (List<CuentaDTO>) repositorio.findAll();
     }
 
     @Override
-    public CuentaAhorros getById(long id) {
+    public CuentaDTO getById(long id) {
         return repositorio.findById(id).get();
     }
 
     @Override
-    public CuentaAhorros save(CuentaAhorros c) {
+    public CuentaDTO save(CuentaDTO c) {
         return repositorio.save(c);
     }
 
     @Override
-    public CuentaAhorros update(CuentaAhorros c) {
+    public CuentaDTO update(CuentaDTO c) {
         return repositorio.save(c);
     }
 

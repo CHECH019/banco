@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.patrones.banco.dto.TarjetaDTO;
 import com.patrones.banco.iServicios.IClienteServicio;
 import com.patrones.banco.iServicios.ITarjetaServicio;
-import com.patrones.banco.modelo.TarjetaDebito;
 
 @Controller
 public class TarjetaControlador {
@@ -28,12 +28,12 @@ public class TarjetaControlador {
 
     @GetMapping("/tarjetas/new")
     public String crear(Model model){
-        model.addAttribute("tarjeta", new TarjetaDebito());
+        model.addAttribute("tarjeta", new TarjetaDTO());
         return "/tarjetas/new-tarjeta";
     }
 
     @PostMapping("/tarjetas/save")
-    public String guardar(@ModelAttribute("tarjeta") TarjetaDebito tarjeta){
+    public String guardar(@ModelAttribute("tarjeta") TarjetaDTO tarjeta){
         tarjeta.setCliente(clienteServicio.getByDni(tarjeta.getCliente().getDni()));
         servicio.save(tarjeta); 
         return "redirect:/tarjetas";
@@ -46,8 +46,8 @@ public class TarjetaControlador {
     }
 
     @PostMapping("/tarjetas/{id}")
-    public String actualizar(@PathVariable long id, @ModelAttribute("tarjetas") TarjetaDebito tarjeta){
-        TarjetaDebito t = servicio.getById(id);
+    public String actualizar(@PathVariable long id, @ModelAttribute("tarjetas") TarjetaDTO tarjeta){
+        TarjetaDTO t = servicio.getById(id);
         t.setVencimiento(tarjeta.getVencimiento());
         t.setNumeroTarjeta(tarjeta.getNumeroTarjeta());
         t.setCvv(tarjeta.getCvv());

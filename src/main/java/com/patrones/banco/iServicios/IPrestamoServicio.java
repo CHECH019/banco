@@ -2,12 +2,12 @@ package com.patrones.banco.iServicios;
 
 import java.util.List;
 
-import com.patrones.banco.modelo.Prestamo;
+import com.patrones.banco.dto.PrestamoDTO;
 
 public interface IPrestamoServicio {
-    public List<Prestamo> getList();
-    public Prestamo getById(long id);
-    public Prestamo save(Prestamo p);
-    public Prestamo update(Prestamo p);
+    public List<PrestamoDTO> getList();
+    public PrestamoDTO getById(long id);
+    public PrestamoDTO save(PrestamoDTO p);
+    public PrestamoDTO update(PrestamoDTO p);
     public void delete(long id);
 }

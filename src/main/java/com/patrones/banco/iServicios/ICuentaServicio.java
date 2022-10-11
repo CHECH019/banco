@@ -2,12 +2,12 @@ package com.patrones.banco.iServicios;
 
 import java.util.List;
 
-import com.patrones.banco.modelo.CuentaAhorros;
+import com.patrones.banco.dto.CuentaDTO;
 
 public interface ICuentaServicio {
-    public List<CuentaAhorros> getList();
-    public CuentaAhorros getById(long id);
-    public CuentaAhorros save(CuentaAhorros c);
-    public CuentaAhorros update(CuentaAhorros c);
+    public List<CuentaDTO> getList();
+    public CuentaDTO getById(long id);
+    public CuentaDTO save(CuentaDTO c);
+    public CuentaDTO update(CuentaDTO c);
     public void delete(long id);
 }

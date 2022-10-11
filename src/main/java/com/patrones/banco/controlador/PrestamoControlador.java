@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.patrones.banco.dto.PrestamoDTO;
 import com.patrones.banco.iServicios.IClienteServicio;
 import com.patrones.banco.iServicios.IPrestamoServicio;
-import com.patrones.banco.modelo.Prestamo;
 
 @Controller
 public class PrestamoControlador {
@@ -28,12 +28,12 @@ public class PrestamoControlador {
 
     @GetMapping("/prestamos/new")
     public String crear(Model model){
-        model.addAttribute("prestamo", new Prestamo());
+        model.addAttribute("prestamo", new PrestamoDTO());
         return "/prestamos/new-prestamo";
     }
 
     @PostMapping("/prestamos/save")
-    public String guardar(@ModelAttribute("prestamo") Prestamo prestamo){
+    public String guardar(@ModelAttribute("prestamo") PrestamoDTO prestamo){
         prestamo.setCliente(clienteServicio.getByDni(prestamo.getCliente().getDni()));
         servicio.save(prestamo); 
         return "redirect:/prestamos";
@@ -46,8 +46,8 @@ public class PrestamoControlador {
     }
 
     @PostMapping("/prestamos/{id}")
-    public String actualizar(@PathVariable long id, @ModelAttribute("prestamos") Prestamo prestamo){
-        Prestamo p = servicio.getById(id);
+    public String actualizar(@PathVariable long id, @ModelAttribute("prestamos") PrestamoDTO prestamo){
+        PrestamoDTO p = servicio.getById(id);
         p.setValor(prestamo.getValor());
         p.setIntereses(prestamo.getIntereses());
         p.setCuotas(prestamo.getCuotas());

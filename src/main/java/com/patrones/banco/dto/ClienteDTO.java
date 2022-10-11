@@ -1,4 +1,4 @@
-package com.patrones.banco.modelo;
+package com.patrones.banco.dto;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente {
+public class ClienteDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,13 +31,13 @@ public class Cliente {
     private String correo;
 
     @OneToMany(mappedBy = "cliente")
-    List<CuentaAhorros> cuentas;
+    List<CuentaDTO> cuentas;
 
     @OneToMany(mappedBy = "cliente")
-    List<Prestamo> prestamos;
+    List<PrestamoDTO> prestamos;
 
     @OneToMany(mappedBy = "cliente")
-    List<TarjetaDebito> tarjetas;
+    List<TarjetaDTO> tarjetas;
 
     public long getId() {
         return id;
@@ -79,27 +79,27 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public List<CuentaAhorros> getCuentas() {
+    public List<CuentaDTO> getCuentas() {
         return cuentas;
     }
 
-    public void setCuentas(List<CuentaAhorros> cuentas) {
+    public void setCuentas(List<CuentaDTO> cuentas) {
         this.cuentas = cuentas;
     }
 
-    public List<Prestamo> getPrestamos() {
+    public List<PrestamoDTO> getPrestamos() {
         return prestamos;
     }
 
-    public void setPrestamos(List<Prestamo> prestamos) {
+    public void setPrestamos(List<PrestamoDTO> prestamos) {
         this.prestamos = prestamos;
     }
 
-    public List<TarjetaDebito> getTarjetas() {
+    public List<TarjetaDTO> getTarjetas() {
         return tarjetas;
     }
 
-    public void setTarjetas(List<TarjetaDebito> tarjetas) {
+    public void setTarjetas(List<TarjetaDTO> tarjetas) {
         this.tarjetas = tarjetas;
     }
 

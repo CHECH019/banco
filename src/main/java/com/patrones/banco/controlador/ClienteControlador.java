@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.patrones.banco.dto.ClienteDTO;
 import com.patrones.banco.iServicios.IClienteServicio;
-import com.patrones.banco.modelo.Cliente;
 
 @Controller
 public class ClienteControlador {
@@ -24,12 +24,12 @@ public class ClienteControlador {
 
     @GetMapping("/clientes/new")
     public String crear(Model model){
-        model.addAttribute("cliente", new Cliente());
+        model.addAttribute("cliente", new ClienteDTO());
         return "/clientes/new-cliente";
     }
 
     @PostMapping("/clientes/save")
-    public String guardar(@ModelAttribute("cliente") Cliente cliente){
+    public String guardar(@ModelAttribute("cliente") ClienteDTO cliente){
         servicio.save(cliente); 
         return "redirect:/clientes";
     }
@@ -41,8 +41,8 @@ public class ClienteControlador {
     }
 
     @PostMapping("/clientes/{id}")
-    public String actualizar(@PathVariable long id, @ModelAttribute("cliente") Cliente cliente){
-        Cliente c = servicio.getById(id);
+    public String actualizar(@PathVariable long id, @ModelAttribute("cliente") ClienteDTO cliente){
+        ClienteDTO c = servicio.getById(id);
         c.setNombre(cliente.getNombre());
         c.setCorreo(cliente.getCorreo());
         c.setDni(cliente.getDni());

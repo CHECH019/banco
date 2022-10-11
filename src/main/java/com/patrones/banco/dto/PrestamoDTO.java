@@ -1,4 +1,4 @@
-package com.patrones.banco.modelo;
+package com.patrones.banco.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "prestamo")
-public class Prestamo {
+public class PrestamoDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -30,7 +30,7 @@ public class Prestamo {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    private ClienteDTO cliente;
 
     public long getId() {
         return id;
@@ -72,11 +72,11 @@ public class Prestamo {
         this.descripcion = descripcion;
     }
 
-    public Cliente getCliente() {
+    public ClienteDTO getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }
 

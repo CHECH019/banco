@@ -1,4 +1,4 @@
-package com.patrones.banco.modelo;
+package com.patrones.banco.dto;
 
 import java.time.LocalDate;
 
@@ -15,7 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "tarjeta_debito")
-public class TarjetaDebito {
+public class TarjetaDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -33,7 +33,7 @@ public class TarjetaDebito {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    private ClienteDTO cliente;
 
     public long getId() {
         return id;
@@ -67,11 +67,11 @@ public class TarjetaDebito {
         this.vencimiento = vencimiento;
     }
 
-    public Cliente getCliente() {
+    public ClienteDTO getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }
 

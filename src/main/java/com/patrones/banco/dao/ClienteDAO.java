@@ -1,14 +1,14 @@
-package com.patrones.banco.repositorios;
+package com.patrones.banco.dao;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.patrones.banco.modelo.Cliente;
+import com.patrones.banco.dto.ClienteDTO;
 
 @Repository
-public interface ClienteRepositorio extends CrudRepository<Cliente,Long>{
+public interface ClienteDAO extends CrudRepository<ClienteDTO,Long>{
     @Query(value = "select * from cliente where dni = :dni",nativeQuery = true)
-    Cliente findByDni(@Param("dni") long dni);
+    ClienteDTO findByDni(@Param("dni") long dni);
 }

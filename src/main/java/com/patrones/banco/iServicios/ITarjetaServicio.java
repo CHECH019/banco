@@ -2,12 +2,12 @@ package com.patrones.banco.iServicios;
 
 import java.util.List;
 
-import com.patrones.banco.modelo.TarjetaDebito;
+import com.patrones.banco.dto.TarjetaDTO;
 
 public interface ITarjetaServicio {
-    public List<TarjetaDebito> getList();
-    public TarjetaDebito getById(long id);
-    public TarjetaDebito save(TarjetaDebito t);
-    public TarjetaDebito update(TarjetaDebito t);
+    public List<TarjetaDTO> getList();
+    public TarjetaDTO getById(long id);
+    public TarjetaDTO save(TarjetaDTO t);
+    public TarjetaDTO update(TarjetaDTO t);
     public void delete(long id);
 }

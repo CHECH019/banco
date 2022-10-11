@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.patrones.banco.dto.CuentaDTO;
 import com.patrones.banco.iServicios.IClienteServicio;
 import com.patrones.banco.iServicios.ICuentaServicio;
-import com.patrones.banco.modelo.CuentaAhorros;
 
 @Controller
 public class CuentaControlador {
@@ -28,12 +28,12 @@ public class CuentaControlador {
 
     @GetMapping("/cuentas/new")
     public String crear(Model model){
-        model.addAttribute("cuenta", new CuentaAhorros());
+        model.addAttribute("cuenta", new CuentaDTO());
         return "/cuentas/new-cuenta";
     }
 
     @PostMapping("/cuentas/save")
-    public String guardar(@ModelAttribute("cuenta") CuentaAhorros cuenta){
+    public String guardar(@ModelAttribute("cuenta") CuentaDTO cuenta){
         cuenta.setCliente(clienteServicio.getByDni(cuenta.getCliente().getDni()));
         servicio.save(cuenta); 
         return "redirect:/cuentas";
@@ -46,8 +46,8 @@ public class CuentaControlador {
     }
 
     @PostMapping("/cuentas/{id}")
-    public String actualizar(@PathVariable long id, @ModelAttribute("cuentas") CuentaAhorros cuenta){
-        CuentaAhorros c = servicio.getById(id);
+    public String actualizar(@PathVariable long id, @ModelAttribute("cuentas") CuentaDTO cuenta){
+        CuentaDTO c = servicio.getById(id);
         c.setClave(cuenta.getClave());
         c.setSaldo(cuenta.getSaldo());
         servicio.update(c);

@@ -5,33 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.patrones.banco.dao.PrestamoDAO;
+import com.patrones.banco.dto.PrestamoDTO;
 import com.patrones.banco.iServicios.IPrestamoServicio;
-import com.patrones.banco.modelo.Prestamo;
-import com.patrones.banco.repositorios.PrestamoRepositorio;
 
 @Service
 public class PrestamoServicio implements IPrestamoServicio{
 
     @Autowired
-    private PrestamoRepositorio repositorio;
+    private PrestamoDAO repositorio;
 
     @Override
-    public List<Prestamo> getList() {
-        return (List<Prestamo>) repositorio.findAll();
+    public List<PrestamoDTO> getList() {
+        return (List<PrestamoDTO>) repositorio.findAll();
     }
 
     @Override
-    public Prestamo getById(long id) {
+    public PrestamoDTO getById(long id) {
         return repositorio.findById(id).get();
     }
 
     @Override
-    public Prestamo save(Prestamo c) {
+    public PrestamoDTO save(PrestamoDTO c) {
         return repositorio.save(c);
     }
 
     @Override
-    public Prestamo update(Prestamo c) {
+    public PrestamoDTO update(PrestamoDTO c) {
         return repositorio.save(c);
     }
 

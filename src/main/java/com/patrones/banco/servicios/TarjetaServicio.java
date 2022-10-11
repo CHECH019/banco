@@ -5,33 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.patrones.banco.dao.TarjetaDAO;
+import com.patrones.banco.dto.TarjetaDTO;
 import com.patrones.banco.iServicios.ITarjetaServicio;
-import com.patrones.banco.modelo.TarjetaDebito;
-import com.patrones.banco.repositorios.TarjetaRepositorio;
 
 @Service
 public class TarjetaServicio implements ITarjetaServicio{
 
     @Autowired
-    private TarjetaRepositorio repositorio;
+    private TarjetaDAO repositorio;
 
     @Override
-    public List<TarjetaDebito> getList() {
-        return (List<TarjetaDebito>) repositorio.findAll();
+    public List<TarjetaDTO> getList() {
+        return (List<TarjetaDTO>) repositorio.findAll();
     }
 
     @Override
-    public TarjetaDebito getById(long id) {
+    public TarjetaDTO getById(long id) {
         return repositorio.findById(id).get();
     }
 
     @Override
-    public TarjetaDebito save(TarjetaDebito c) {
+    public TarjetaDTO save(TarjetaDTO c) {
         return repositorio.save(c);
     }
 
     @Override
-    public TarjetaDebito update(TarjetaDebito c) {
+    public TarjetaDTO update(TarjetaDTO c) {
         return repositorio.save(c);
     }
 

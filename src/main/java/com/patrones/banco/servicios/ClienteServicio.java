@@ -5,33 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.patrones.banco.dao.ClienteDAO;
+import com.patrones.banco.dto.ClienteDTO;
 import com.patrones.banco.iServicios.IClienteServicio;
-import com.patrones.banco.modelo.Cliente;
-import com.patrones.banco.repositorios.ClienteRepositorio;
 
 @Service
 public class ClienteServicio implements IClienteServicio{
 
     @Autowired
-    private ClienteRepositorio repositorio;
+    private ClienteDAO repositorio;
 
     @Override
-    public List<Cliente> getList() {
-        return (List<Cliente>) repositorio.findAll();
+    public List<ClienteDTO> getList() {
+        return (List<ClienteDTO>) repositorio.findAll();
     }
 
     @Override
-    public Cliente getById(long id) {
+    public ClienteDTO getById(long id) {
         return repositorio.findById(id).get();
     }
 
     @Override
-    public Cliente save(Cliente c) {
+    public ClienteDTO save(ClienteDTO c) {
         return repositorio.save(c);
     }
 
     @Override
-    public Cliente update(Cliente c) {
+    public ClienteDTO update(ClienteDTO c) {
         return repositorio.save(c);
     }
 
@@ -41,7 +41,7 @@ public class ClienteServicio implements IClienteServicio{
     }
 
     @Override
-    public Cliente getByDni(long dni) {
+    public ClienteDTO getByDni(long dni) {
         return repositorio.findByDni(dni);
     }
     

@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,26 +20,24 @@ public class ClienteDTO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = true, unique = true)
-    private long dni;
-
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String nombre;
 
-    @Column(nullable = true)
-    private String cel;
+    @Column(nullable = false)
+    private String apellido;
 
-    @Column(nullable = true, unique = true)
+    @Column(nullable = false)
+    private String genero;
+
+    @Column(nullable = false)
     private String correo;
 
-    @OneToMany(mappedBy = "cliente")
-    List<CuentaDTO> cuentas;
+    @Column(nullable = false)
+    private String direccion;
 
-    @OneToMany(mappedBy = "cliente")
-    List<PrestamoDTO> prestamos;
-
-    @OneToMany(mappedBy = "cliente")
-    List<TarjetaDTO> tarjetas;
+    @ManyToMany
+    @JoinTable(name = "cliente_producto", joinColumns = @JoinColumn(name = "cliente_id"), inverseJoinColumns = @JoinColumn(name = "producto_id"))
+    private List<ProductoDTO> productos;
 
     public long getId() {
         return id;
@@ -45,14 +45,6 @@ public class ClienteDTO {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public long getDni() {
-        return dni;
-    }
-
-    public void setDni(long dni) {
-        this.dni = dni;
     }
 
     public String getNombre() {
@@ -63,14 +55,6 @@ public class ClienteDTO {
         this.nombre = nombre;
     }
 
-    public String getCel() {
-        return cel;
-    }
-
-    public void setCel(String cel) {
-        this.cel = cel;
-    }
-
     public String getCorreo() {
         return correo;
     }
@@ -79,29 +63,30 @@ public class ClienteDTO {
         this.correo = correo;
     }
 
-    public List<CuentaDTO> getCuentas() {
-        return cuentas;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setCuentas(List<CuentaDTO> cuentas) {
-        this.cuentas = cuentas;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public List<PrestamoDTO> getPrestamos() {
-        return prestamos;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setPrestamos(List<PrestamoDTO> prestamos) {
-        this.prestamos = prestamos;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
-    public List<TarjetaDTO> getTarjetas() {
-        return tarjetas;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setTarjetas(List<TarjetaDTO> tarjetas) {
-        this.tarjetas = tarjetas;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
-
     
+    
+
 }

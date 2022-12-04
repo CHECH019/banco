@@ -3,6 +3,8 @@ package com.patrones.banco.servicios;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.patrones.banco.dao.ClienteDAO;
@@ -16,12 +18,12 @@ public class ClienteServicio implements IClienteServicio{
     private ClienteDAO repositorio;
 
     @Override
-    public List<ClienteDTO> getList() {
-        return (List<ClienteDTO>) repositorio.findAll();
+    public List<ClienteDTO> getAll() {
+        return repositorio.findAll();
     }
 
     @Override
-    public ClienteDTO getById(long id) {
+    public ClienteDTO getById(Long id) {
         return repositorio.findById(id).get();
     }
 
@@ -36,13 +38,20 @@ public class ClienteServicio implements IClienteServicio{
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         repositorio.deleteById(id);
     }
 
     @Override
-    public ClienteDTO getByDni(long dni) {
-        return repositorio.findByDni(dni);
+    public List<ClienteDTO> getByNameAndLastName(String name, String lastName) {
+        return repositorio.findByNameAndLastName(name,lastName);
     }
+
+    @Override
+    public Page<ClienteDTO> getAllPageable(Pageable pageable) {
+        return repositorio.findAll(pageable);
+    }
+    
+    
     
 }

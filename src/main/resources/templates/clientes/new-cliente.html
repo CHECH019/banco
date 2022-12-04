@@ -42,13 +42,13 @@
                 <div class="card-body"></div>
                 <form th:action="@{/clientes/save}" th:object="${cliente}" method="POST">
                     <div class="form-group">
-                        <label for="">DNI</label>
-                        <input type="text" name="name" th:field="*{dni}" class="form-control">
+                        <label for="">Nombre</label>
+                        <input type="text" name="name" th:field="*{nombre}" class="form-control">
                     </div>
                     <br>
                     <div class="form-group">
-                        <label for="">Nombre</label>
-                        <input type="text" name="name" th:field="*{nombre}" class="form-control">
+                        <label for="">Apellido</label>
+                        <input type="text" name="name" th:field="*{apellido}" class="form-control">
                     </div>
                     <br>
                     <div class="form-group">
@@ -57,8 +57,13 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <label for="">Teléfono móvil</label>
-                        <input type="number" name="phone" th:field="*{cel}" class="form-control">
+                        <label for="">Genero</label>
+                        <input type="text" name="phone" th:field="*{genero}" class="form-control">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="">Dirección</label>
+                        <input type="text" name="phone" th:field="*{direccion}" class="form-control">
                     </div>
                     <br>
                     <div class="box-footer">

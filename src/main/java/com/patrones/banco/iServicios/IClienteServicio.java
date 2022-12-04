@@ -2,13 +2,12 @@ package com.patrones.banco.iServicios;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.patrones.banco.dto.ClienteDTO;
 
-public interface IClienteServicio {
-    public List<ClienteDTO> getList();
-    public ClienteDTO getById(long id);
-    public ClienteDTO getByDni(long dni);
-    public ClienteDTO save(ClienteDTO c);
-    public ClienteDTO update(ClienteDTO c);
-    public void delete(long id);
+public interface IClienteServicio extends GenericService<ClienteDTO, Long>{
+    public Page<ClienteDTO> getAllPageable(Pageable pageable);
+    public List<ClienteDTO> getByNameAndLastName(String name, String lastName);
 }

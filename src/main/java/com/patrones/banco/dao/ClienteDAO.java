@@ -1,14 +1,16 @@
 package com.patrones.banco.dao;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.patrones.banco.dto.ClienteDTO;
 
 @Repository
-public interface ClienteDAO extends CrudRepository<ClienteDTO,Long>{
-    @Query(value = "select * from cliente where dni = :dni",nativeQuery = true)
-    ClienteDTO findByDni(@Param("dni") long dni);
+public interface ClienteDAO extends JpaRepository<ClienteDTO,Long>{
+    @Query("SELECT c FROM ClienteDTO c WHERE c.nombre = ?1 AND c.apellido = ?2")
+    List<ClienteDTO> findByNameAndLastName(String name, String lastName);
+
 }

@@ -1,3 +1,17 @@
-*{
-    background-color: #333;
+.pages{
+    display: flex;
+    max-width: 80%;
+    margin: 20px auto;
+    overflow-x: auto;
+}
+.page-item{
+    border-right: 1px solid #33333342;
+}
+.page-link{
+    display: inline-block;
+    padding: 10px;
+}
+.page-link:hover{
+    background-color: #aaa;
+
 }

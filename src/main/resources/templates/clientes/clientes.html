@@ -10,11 +10,7 @@
 </head>
 <body>
     <div class="container mt-4">
-        <div class="row">
-            <div class="col-lg-3">
-                <a th:href="@{clientes/new}" class="btn btn-primary btn-sm mb3">Nuevo cliente</a>
-            </div>
-        </div>
+        
         
         <br>
         <form th:action="@{/clientes/buscar}">
@@ -32,6 +28,12 @@
             <input type="submit" value="Ver productos del Cliente" th:formaction="@{/productos/buscar}">
         </form>
         <br>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{/clientes/new}" class="btn btn-primary btn-sm mb3">Nuevo cliente</a>
+            </div>
+        </div>
         <table class="table">
             <h1 class="text-center">Clientes</h1><br>
             <thead>

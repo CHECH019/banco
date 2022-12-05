@@ -47,7 +47,6 @@ public class ProductoControlador {
 
     @PostMapping("save_product")
     public String saveClientProduct(@RequestParam("product_id") Integer product_id, @RequestParam("client_id") Long client_id){
-        System.out.println(client_id+" "+product_id);
         servicio.saveClienteProducto(client_id, product_id);
         return "redirect:/productos/"+client_id;
     }

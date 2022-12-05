@@ -15,6 +15,23 @@
                 <a th:href="@{clientes/new}" class="btn btn-primary btn-sm mb3">Nuevo cliente</a>
             </div>
         </div>
+        
+        <br>
+        <form th:action="@{/clientes/buscar}">
+            <label for="">Buscar por id</label><br>
+            <input type="text" name="id" id="" placeholder="id" required>
+            <input type="submit" value="Buscar Cliente">
+            <input type="submit" value="Ver productos del Cliente" th:formaction="@{/productos/buscar}">
+        </form>
+        <br>    
+        <form th:action="@{/clientes/buscar}">
+            <label for="">Buscar por nombre y apellido</label><br>
+            <input type="text" name="name" id="" placeholder="nombre" required>
+            <input type="text" name="lastName" id="" placeholder="apellido" required>
+            <input type="submit" value="Buscar Cliente">
+            <input type="submit" value="Ver productos del Cliente" th:formaction="@{/productos/buscar}">
+        </form>
+        <br>
         <table class="table">
             <h1 class="text-center">Clientes</h1><br>
             <thead>
@@ -31,7 +48,7 @@
                     <td th:text="${client.nombre}"></td>
                     <td th:text="${client.apellido}"></td>
                     <td>
-                        <a th:href="@{/productos/buscar?id={id}(id=${client.id})}" class="btn btn-primary" href="#">Ver Productos</a>
+                        <a th:href="@{/productos/buscar?id={id}(id=${client.id})}" class="btn btn-success" href="#">Ver Productos</a>
                     </td>
                 </tr>
             </tbody>

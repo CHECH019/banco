@@ -52,7 +52,7 @@ public class ClienteControlador {
         String name = params.get("name");
         String lastName = params.get("lastName");
         String id = params.get("id");
-        if(id != null){
+        if(id != null && !id.isEmpty()){
             result = new ArrayList<ClienteDTO>();
             result.add(servicio.getById(Long.parseLong(id)));
         }else {
